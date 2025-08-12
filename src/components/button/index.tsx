@@ -1,24 +1,18 @@
 import  React, { forwardRef }  from "react";
-import { StyleProp, Text, TextInput, TextInputProps, TextStyle, TouchableOpacityProps, View } from "react-native";
+import { ActivityIndicator, StyleProp, Text, TextInput, TextInputProps, TextStyle, TouchableHighlightProps, TouchableOpacity, TouchableOpacityProps, View } from "react-native";
 import { style } from "./style";
 
-type Props = TouchableOpacityProps & {
-    
-}
-// export const Button = forwardRef((propriedades:Props)=>{
+type Props = TouchableHighlightProps & {
+    text?:string,
+    loading?:boolean,
 
-//     const {} = propriedades
-//     return(
-//         <> {/*significa 'fragment' (pode ser usado a tag <Fragment> também. O return no react-native não aceita algo que não esta englobado por uma tag, algo que esteja solto, como o <Text> está fora da <View>, por isso usa o <>*/}
-        
-//             {/* caso o title exista, é mostardo, caso não, não mostra. {title &&} equivale à if(title) (ou seja, caso title exista.....) */}
-//             {title && <Text style={style.titleInput}>{title}</Text>} 
-//             <View style={style.boxInput}>
-//                 <TextInput
-//                     style={style.input} 
-//                     {...rest}
-//                 />
-//             </View>
-//         </>
-//     )
-// })
+}
+export const Button = (({...rest}:Props)=>{
+
+    //const {} = propriedades
+    return(
+        <TouchableOpacity style={style.button} {...rest} activeOpacity={0.6}>
+            {rest.loading?<ActivityIndicator/>:<Text style={style.textButton}>{rest.text}</Text>}
+        </TouchableOpacity>
+    )
+})
