@@ -1,11 +1,18 @@
-import  React, { forwardRef }  from "react";
+import  React, { ComponentType, forwardRef }  from "react";
 import { StyleProp, Text, TextInput, TextInputProps, TextStyle, View } from "react-native";
 import { style } from "./style";
+import { MaterialIcons, FontAwesome, Octicons } from '@expo/vector-icons';
+
+type IconComponent =  React.ComponentType<React.ComponentProps<typeof Octicons>> |
+                        React.ComponentType<React.ComponentProps<typeof MaterialIcons>> ;
 
 type Props = TextInputProps & {
     title?: string,
     height?:number,
     labelStyle?:StyleProp<TextStyle>
+    IconRigth?: IconComponent,
+    iconRightName?: string,
+    onIconRigthPress?: () => void , 
 }
 export const Input = forwardRef((propriedades:Props)=>{
 

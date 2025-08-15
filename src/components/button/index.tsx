@@ -1,18 +1,17 @@
-import  React, { forwardRef }  from "react";
-import { ActivityIndicator, StyleProp, Text, TextInput, TextInputProps, TextStyle, TouchableHighlightProps, TouchableOpacity, TouchableOpacityProps, View } from "react-native";
+import React from "react";
 import { style } from "./style";
-
-type Props = TouchableHighlightProps & {
-    text?:string,
-    loading?:boolean,
-
+import{TouchableOpacity,TouchableOpacityProps,ActivityIndicator,Text}from 'react-native';
+type Props = TouchableOpacityProps&{
+    text:string,
+    loading?:boolean
 }
-export const Button = (({...rest}:Props)=>{
-
-    //const {} = propriedades
+export  function Button({...rest}:Props){
     return(
-        <TouchableOpacity style={style.button} {...rest} activeOpacity={0.6}>
-            {rest.loading?<ActivityIndicator/>:<Text style={style.textButton}>{rest.text}</Text>}
+        <TouchableOpacity {...rest} 
+            style={style.button} 
+            activeOpacity={0.6} 
+        >
+            {rest.loading?<ActivityIndicator color={'#FFF'}/>:<Text style={[style.textButton]}>{rest.text}</Text>}
         </TouchableOpacity>
-    )
-})
+    );
+}
